@@ -1,6 +1,10 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+<%-- 
+    Document   : DYNAMIC TABLE WEB-APPLICATION
+    Created on : Dec 20, 2014, 2:52:59 PM
+    Author     : MOHIT KUMAR & HITESH KHANDELWAL ,iit madras
+                 
+--%>.
  */
 package com.joseph.model;
 
@@ -14,10 +18,7 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
-/**
- *
- * @author Joseph
- */
+
 @Entity
 @Table
 @NamedQueries({@NamedQuery(name="Student.getAll",query="SELECT e FROM Student e")})
@@ -74,4 +75,3 @@ public class Student implements Serializable{
     
     public Student(){}
 }
-

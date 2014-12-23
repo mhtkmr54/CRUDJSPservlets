@@ -1,46 +1,35 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+    Document   : DYNAMIC TABLE WEB-APPLICATION
+    Created on : Dec 20, 2014, 2:52:59 PM
+    Author     : MOHIT KUMAR & HITESH KHANDELWAL ,iit madras
+                
  */
 package com.joseph.controller;
 
 import com.joseph.dao.StudentDaoLocal;
 import com.joseph.model.Student;
 import java.io.IOException;
-import java.io.PrintWriter;
-import static java.time.Clock.system;
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.sql.*;
 
-/**
- *
- * @author Joseph
- */
+
 @WebServlet(name = "StudentServlet", urlPatterns = {"/StudentServlet"})
 public class StudentServlet extends HttpServlet {
     @EJB
     private StudentDaoLocal studentDao;
     
-    
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String action = request.getParameter("action");
         String studentIdStr = request.getParameter("studentId");
-        int test=Integer.parseInt(studentIdStr); 
-        
-        
-       
         int studentId=0;
         if(studentIdStr!=null && !studentIdStr.equals("")){
-            studentId=Integer.parseInt(studentIdStr); 
-          }
- 
+            studentId=Integer.parseInt(studentIdStr);    
+        }
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
         String yearLevelStr = request.getParameter("yearLevel");
@@ -51,11 +40,7 @@ public class StudentServlet extends HttpServlet {
         Student student = new Student(studentId, firstname, lastname, yearLevel);
         
         if("Add".equalsIgnoreCase(action)){
-            
-        
             studentDao.addStudent(student);
-           
-            
         }else if("Edit".equalsIgnoreCase(action)){
             studentDao.editStudent(student);
         }else if("Delete".equalsIgnoreCase(action)){

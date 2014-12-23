@@ -1,18 +1,18 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+<%-- 
+    Document   : DYNAMIC TABLE WEB-APPLICATION
+    Created on : Dec 20, 2014, 2:52:59 PM
+    Author     : MOHIT KUMAR & HITESH KHANDELWAL ,iit madras
+                 
+--%>
  */
 package com.joseph.dao;
 
 import com.joseph.model.Student;
-import java.sql.ResultSet;
 import java.util.List;
 import javax.ejb.Local;
 
-/**
- *
- * @author Joseph
- */
+
 @Local
 public interface StudentDaoLocal {
 
@@ -25,12 +25,5 @@ public interface StudentDaoLocal {
     Student getStudent(int studentId);
 
     List<Student> getAllStudents();
-    
-    /**
-     *
-     * @param id
-     * @return
-     */
-    String executeFetchQuery(int id);
     
 }

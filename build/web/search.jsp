@@ -1,29 +1,32 @@
 <%-- 
-    Document   : search
-    Created on : Dec 8, 2014, 1:19:03 PM
-    Author     : Admin
+    Document   : DYNAMIC TABLE WEB-APPLICATION
+    Created on : Dec 20, 2014, 2:52:59 PM
+    Author     : MOHIT KUMAR & HITESH KHANDELWAL ,iit madras
+                 
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Enter your your search term</h1>
-        <form action="http://localhost:8080/CRUDWebApplication/Searchf" method="POST">
-           <input type="text" name="studentId" value="${student.studentId}" />
-           <input type="submit" name="action" value="Search" />
-            
-        </form>
-           
-         
+
+<%@ page import="java.sql.*" %>
+
 <form>
-
-
-       
-    </body>
-</html>
+<table>
+<%
+String value=request.getParameter("id");
+int v=Integer.parseInt(value);
+Class.forName("com.mysql.jdbc.Driver");
+Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1257/studentDB","joseph", "123");
+Statement st=conn.createStatement();
+ResultSet rs = st.executeQuery("select * from test where id="+v+"");
+if(rs.next()){ 
+    %>
+<tr><td>Name: </td><td<input type="text" value="<%=rs.getString("name")%>" > </td></tr>
+<tr><td>Address: </td><td<input type="text" value="<%=rs.getString("address")%>" > </td></tr>
+<tr><td>Contact No: </td><td<input type="text" value="<%=rs.getInt("contactNo")%>" > </td></tr>
+<tr><td>Email: </td><td<input type="text" value="<%=rs.getString("email")%>" > </td></tr>
+      <%
+}
+%>
+</table>
+</form>
